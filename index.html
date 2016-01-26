@@ -6,51 +6,55 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body ng-controller="mainCtrl">
+  <div class="string">
+    <label>Your string to curve:</label>
+    <input type="text" ng-model="textToCurve" ng-change="applyCurve()">
+  </div>
   <div id="controlArea">
     <table>
       <tr>
         <td><label>textColor:</label></td>
-        <td><input type="text" ng-model="textColor"></td>
+        <td><input type="text" ng-model="textColor" ng-blur="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>fontSize:</label></td>
-        <td> <input type="number" ng-model="fontSize"></td>
+        <td> <input type="number" ng-model="fontSize" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>backColor:</label></td>
-        <td>   <input type="text" ng-model="backColor"></td>
+        <td>   <input type="text" ng-model="backColor" ng-blur="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>circleSize:</label></td>
-        <td><input type="number" ng-model="circleSize"></td>
+        <td><input type="number" step="10" value="200" ng-model="circleSize" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>curvature:</label></td>
-        <td><input type="number" ng-model="curvature"></td>
+        <td><input type="number" step="0.05" value="0.3" max="1" min="-1" ng-model="curvature" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>under:</label></td>
-        <td><input type="checkbox" ng-model="under"></td>
+        <td><input type="checkbox" ng-model="under" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>lineSides:</label></td>
-        <td> <input type="checkbox" ng-model="lineSides"></td>
+        <td> <input type="checkbox" ng-model="lineSides" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>lineOnTop:</label></td>
-        <td> <input type="checkbox" ng-model="lineOnTop"></td>
+        <td> <input type="checkbox" ng-model="lineOnTop" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td> <label>lineOnBottom:</label></td>
-        <td>   <input type="checkbox" ng-model="lineOnBottom"></td>
+        <td>   <input type="checkbox" ng-model="lineOnBottom" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>lengthOfLines:</label></td>
-        <td><input type="number" ng-model="lengthOfLines"></td>
+        <td><input type="number" ng-model="lengthOfLines" ng-change="applyCurve()"></td>
       </tr>
       <tr>
         <td><label>lineColor:</label></td>
-        <td> <input type="text" ng-model="lineColor"></td>
+        <td> <input type="text" ng-model="lineColor" ng-blur="applyCurve()"></td>
       </tr>
     </table>
 
@@ -58,10 +62,10 @@
     <div class="theCode">
       let el = curveText({
       <br>
-  
-      <span ng-if="textColor">{{twoSpaces}}textColor: {{textColor}},<br></span>
+      <span ng-if="textToCurve">{{twoSpaces}}text: "{{textToCurve}}",<br></span>
+      <span ng-if="textColor">{{twoSpaces}}textColor: "{{textColor}}",<br></span>
       <span ng-if="fontSize">{{twoSpaces}}fontSize: {{fontSize}},<br></span>
-      <span ng-if="backColor">{{twoSpaces}}backColor: {{backColor}},<br></span>
+      <span ng-if="backColor">{{twoSpaces}}backColor: "{{backColor}}",<br></span>
       <span ng-if="circleSize">{{twoSpaces}}circleSize: {{circleSize}},<br></span>
       <span ng-if="curvature">{{twoSpaces}}curvature: {{curvature}},<br></span>
       <span ng-if="under">{{twoSpaces}}under: {{under}},<br></span>
@@ -69,34 +73,16 @@
       <span ng-if="lineOnTop">{{twoSpaces}}lineOnTop: {{lineOnTop}},<br></span>
       <span ng-if="lineOnBottom">{{twoSpaces}}lineOnBottom: {{lineOnBottom}},<br></span>
       <span ng-if="lengthOfLines">{{twoSpaces}}lengthOfLines: {{lengthOfLines}},<br></span>
-      <span ng-if="lineColor">{{twoSpaces}}lineColor: {{lineColor}}<br></span>
-     
+      <span ng-if="lineColor">{{twoSpaces}}lineColor: "{{lineColor}}"<br></span>
       })
     </div>
-
-
   </div>
 
-</div><div id="displayArea"></div>
+</div><div id="displayArea">
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="dist/main.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
 
-
-
-
-
-<!-- text:" This text will go around and around ",
-    // textColor:"blue",
-    fontSize:2,
-    circleSize:10000,
-    curvature:.1,
-    // under:true,
-    // backColor: "lightgreen",
-    lineSides: true,
-    // lineOnTop:1,
-    // lineOnBottom:1,
-    // lengthOfLines:4,
-    lineColor:"red",
-    }) -->
